@@ -1,0 +1,23 @@
+name: Action-03 Workflow
+on: push
+
+jobs:
+    action-03_job_01:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Install Cowsay Program
+          run: sudo apt-get install cowsay -y
+        
+    action-03_job_02:
+      needs: action-03_job_01
+      runs-on: ubuntu-latest
+      steps:
+      - name: Execute Cowsay Program
+        run: cowsay -f dragon "Run for cover" >> dragont.txt
+
+    action-03_job_03:
+      runs-on: ubuntu-latest
+      needs: [action-03_job_01, action-03_job_02]
+      steps:
+      - name: Read File
+        run: cat dragon.txt
