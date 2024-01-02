@@ -13,3 +13,14 @@ jobs:
             echo "My first Github Action Job"
             ls -ltra
             cat README.md
+
+    action-01_job_02:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v4
+
+        - name: List and read files
+          run: |
+            sleep 10
+            echo "hello this is test"
