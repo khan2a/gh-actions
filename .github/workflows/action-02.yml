@@ -1,0 +1,15 @@
+name: Action-02 Workflow
+on: push
+
+jobs:
+    action-02_job_01:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v4
+
+        - name: Install Cowsay
+          run: sudo apt-get install cowsay -y
+
+        - name: Generate ASCII Artwork
+          run: cowsay -f dragon "Run for cover" >> dragon.txt

@@ -2,7 +2,7 @@ name: Action-01 Workflow
 on: push
 
 jobs:
-    first_job:
+    action-01_job_01:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout Repo
@@ -13,5 +13,3 @@ jobs:
             echo "My first Github Action Job"
             ls -ltra
             cat README.md
-        - name: Generate ASCII Artwork
-          run: cowsay -f dragon "Run for cover" >> dragon.txt
