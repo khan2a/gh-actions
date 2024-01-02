@@ -7,9 +7,11 @@ jobs:
         steps:
         - name: Checkout Repo
           uses: actions/checkout@v4
+        
+        - name: List Repo Files
+          run: ls -ltra
 
-        - name: Install Cowsay
-          run: sudo apt-get install cowsay -y
-
-        - name: Generate ASCII Artwork
-          run: cowsay -f dragon "Run for cover"
+        - name: Execute Shell Script
+          run: |
+            chmod +x shell-script.sh
+            ./shell-script.sh
