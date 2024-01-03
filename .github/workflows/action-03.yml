@@ -7,17 +7,23 @@ jobs:
         steps:
         - name: Install Cowsay Program
           run: sudo apt-get install cowsay -y
-        
-    action-03_job_02:
-      needs: action-03_job_01
-      runs-on: ubuntu-latest
-      steps:
-      - name: Execute Cowsay Program
-        run: cowsay -f dragon "Run for cover" >> dragon.txt
 
-    action-03_job_03:
-      runs-on: ubuntu-latest
-      needs: [action-03_job_01, action-03_job_02]
-      steps:
-      - name: Read File
-        run: cat dragon.txt
+        - name: Execute Cowsay Program
+          run: cowsay -f dragon "Run for cover" >> dragon.txt
+
+        - name: Upload file
+          uses: actions/upload-artifact@v3
+          with:
+            name: dragon-text-file
+            path: dragon.txt
+
+    action-03_job_02:
+        runs-on: ubuntu-latest
+        needs: [action-03_job_01]
+        steps:
+        - name: Download File
+          uses: actions/dowload-artifact@gv3
+          with:
+            name: dragon-text-file
+        - name: Read File
+          run: cat dragon.txt
